@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,user-scalable=no" name="viewport">
+	<script>
+		document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/18.75 + 'px';
+
+	</script>
+	<style>
+		
+        body{
+            
+            background-color: brown;
+        }
+        
+		button{
+			-webkit-appearance: none;
+			border-radius: 0;
+			width: 100%;
+			height: 4.0rem;
+			margin: 4.0rem, 0rem;
+			font-size: 1rem;
+		}
+		div{
+            margin-left: 5rem;
+			width: 100%;
+			height: 2.0rem;
+            color: orange;
+		}
+
+	</style>
+	<title>测试网页</title>
+</head>
+<body>
+<div></div>
+<button id="button1" type="button" onclick="WebViewJSBridge.method1()">JS调用Native方法(不传参)</button>
+<div></div>
+<button id="button2" type="button" onclick="WebViewJSBridge.method2('我是标题', '我是内容')">JS调用Native方法(传参)</button>
+<div></div>
+<button id="button3" type="button" onclick="WebViewJSBridge.method3('handler')">JS调用Native的方法后 Native再调用JS函数执行回调</button>
+<div id = "jsContent"></div>
+
+
+<script>
+    
+    //JS方法
+    function handler(argument) {
+        
+        document.getElementById("jsContent").innerHTML = argument["name"] + " " + argument["age"] + "岁 " +  argument["job"]
+    }
+	
+</script>
+</body>
+</html>
